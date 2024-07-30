@@ -16,6 +16,10 @@ provider "hitachi" {
   }
 }
 
+# Display : All Volumes show
+
+
+
 # Display : Storage ports
 data "hitachi_vss_block_storage_ports" "storagePorts" {
   vss_block_address = "10.77.33.79"
