@@ -16,9 +16,25 @@ provider "hitachi" {
   }
 }
 
+# Create: chap user.
+resource "hitachi_vss_block_iscsi_chap_user" "my_chap_user" {
+  vss_block_address       = "10.77.33.79"
+  target_chap_user_name   = "TKSDSCHAP"
+  target_chap_user_secret = "Hitach1$il"
+}
+
+output "chap_user_output" {
+  value = resource.hitachi_vss_block_iscsi_chap_user.my_chap_user
+}
+
 # Display : All Volumes show
+data "hitachi_vss_block_volumes" "vssbvolumes" {
+  vss_block_address = "10.77.33.79"
+}
 
-
+output "volumeoutput" {
+  value = data.hitachi_vss_block_volumes.vssbvolumes
+}
 
 # Display : Storage ports
 data "hitachi_vss_block_storage_ports" "storagePorts" {
