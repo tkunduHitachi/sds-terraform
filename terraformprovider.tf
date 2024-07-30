@@ -16,6 +16,26 @@ provider "hitachi" {
   }
 }
 
+# Display : Storage ports
+data "hitachi_vss_block_storage_ports" "storagePorts" {
+  vss_block_address = "10.77.33.79"
+  port_name = "000-iSCSI-000"
+}
+
+output "storagePorts" {
+  value = data.hitachi_vss_block_storage_ports.storagePorts
+}
+
+# Display : port Authentication.
+data "hitachi_vss_block_iscsi_port_auth" "mycomputeport" {
+  vss_block_address = "10.77.33.79"
+  name = "000-iSCSI-000"
+}
+
+output "mycomputeport" {
+  value = data.hitachi_vss_block_iscsi_port_auth.mycomputeport
+} 
+
 # Display: Compute port information.
 data "hitachi_vss_block_iscsi_port_auth" "mycomputeport" {
   vss_block_address = "10.77.33.79"
