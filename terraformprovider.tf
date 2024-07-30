@@ -1,3 +1,5 @@
+# this test is for VSSb v1.15
+
 # Provider to be downloaded from terraform hitachi
 terraform {
   required_providers {
